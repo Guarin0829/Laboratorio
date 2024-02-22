@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="604.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorio.viewcontroller.InicioViewController">
+    <children>
+        <TabPane layoutX="-6.0" layoutY="-8.0" prefHeight="643.0" prefWidth="460.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Clientes">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <SplitPane layoutX="6.0" layoutY="6.0" orientation="VERTICAL" prefHeight="612.0" prefWidth="454.0">
+                                    <items>
+                                        <fx:include source="ClienteView.fxml" />
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Ventas">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <SplitPane layoutX="6.0" layoutY="6.0" orientation="VERTICAL" prefHeight="612.0" prefWidth="454.0">
+                                    <items>
+                                        <fx:include source="VentaView.fxml" />
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>
