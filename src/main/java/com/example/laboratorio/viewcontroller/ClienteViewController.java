@@ -1,5 +1,8 @@
 package com.example.laboratorio.viewcontroller;
 
+import com.example.laboratorio.Cliente;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +11,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class ClienteViewController {
+
+    ObservableList<Cliente> listaClientes = FXCollections.observableArrayList();
 
     @FXML
     private Button btnActualizarCliente;
@@ -25,13 +30,13 @@ public class ClienteViewController {
     private Button btnLimpiarCamposCliente;
 
     @FXML
-    private TableColumn<?, ?> colDireccionCliente;
+    private TableColumn<Cliente, String> colDireccionCliente;
 
     @FXML
-    private TableColumn<?, ?> colNombreCliente;
+    private TableColumn<Cliente, String> colNombreCliente;
 
     @FXML
-    private TableView<?> tableAnunciantes;
+    private TableView<Cliente> tableAnunciantes;
 
     @FXML
     private TextField txfDireccionCliente;
@@ -50,6 +55,15 @@ public class ClienteViewController {
     @FXML
     void agregarAnunciante(ActionEvent event) {
 
+        String nombre = txfNombreCliente.getText();
+        String numeroIdeficacion = txfNumeroIdentificacionCliente.getText();
+        String direccion = txfDireccionCliente.getText();
+
+        Cliente cliente = new Cliente(nombre, numeroIdeficacion, direccion);
+        listaClientes.add(cliente);
+
+        Limpiar();
+
     }
 
     @FXML
@@ -60,10 +74,26 @@ public class ClienteViewController {
     @FXML
     void eliminarAnunciante(ActionEvent event) {
 
+        int selectedRow = tableAnunciantes.getSelectionModel().getSelectedIndex();
+        if (selectedRow >= 0) {
+            tableAnunciantes.getItems().remove(selectedRow);
+        }
+        Limpiar();
+
     }
 
     @FXML
     void limpiarBusqueda(ActionEvent event) {
+
+    }
+
+    public void Limpiar(){
+
+        txfNombreCliente.setText("");
+        txfNumeroIdentificacionCliente.setText("");
+        txfDireccionCliente.setText("");
+
+
 
     }
 

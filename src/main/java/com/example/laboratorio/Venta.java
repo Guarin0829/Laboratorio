@@ -1,11 +1,16 @@
 package com.example.laboratorio;
 
+import java.util.List;
+
 public class Venta {
 
     String fecha;
     String codigo;
     Integer total;
     String cantidad;
+
+    private Cliente cliente;
+    private List<DetalleVenta> detalleVentas;
 
     public Venta() {
 

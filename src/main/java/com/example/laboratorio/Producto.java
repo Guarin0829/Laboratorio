@@ -49,4 +49,8 @@ public class Producto {
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
+
+    public static <T> int getCantidadInventario(T t) {
+        return 0;
+    }
 }
