@@ -1,6 +1,8 @@
 package com.example.laboratorio.viewcontroller;
 
 import com.example.laboratorio.Cliente;
+import com.example.laboratorio.Empresa;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,9 +12,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
+import java.util.HashMap;
+
 public class ClienteViewController {
 
     ObservableList<Cliente> listaClientes = FXCollections.observableArrayList();
+    Empresa empresa;
+    Cliente clienteSeleccionado;
+
 
     @FXML
     private Button btnActualizarCliente;
@@ -95,6 +102,50 @@ public class ClienteViewController {
 
 
 
+    }
+
+    @FXML
+    void initialize() {
+        empresa = new Empresa();
+        clienteSeleccionado = new Cliente();
+        initView();
+
+    }
+
+    private void initView() {
+        initDataBinding();
+        obtenerCliente();
+        listaClientes.clear();
+        tableAnunciantes.setItems(listaClientes);
+        listenerSelection();
+    }
+    private void initDataBinding() {
+
+        colNombreCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        colDireccionCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDireccion()));
+    }
+
+    private void listenerSelection() {
+        tableAnunciantes.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            clienteSeleccionado = newSelection;
+            mostrarInformacionCliente(clienteSeleccionado);
+        });
+    }
+
+    private void obtenerCliente() {
+        HashMap<String, Cliente> clientes = Empresa.obtenerClientes();
+        Cliente cliente = new Cliente("","","");
+        listaClientes.clear();
+        listaClientes.add(cliente);
+    }
+
+    private void mostrarInformacionCliente(Cliente clienteSeleccionado) {
+        if(clienteSeleccionado != null){
+            txfNumeroIdentificacionCliente.setText(clienteSeleccionado.getNumeroIdentificacion());
+            txfNombreCliente.setText(clienteSeleccionado.getNombre());
+            txfDireccionCliente.setText(clienteSeleccionado.getDireccion());
+
+        }
     }
 
 }

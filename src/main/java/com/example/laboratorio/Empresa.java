@@ -8,8 +8,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.*;
 
-import static javafx.application.Application.launch;
-
 public class Empresa extends Application {
 
     @Override
@@ -22,7 +20,7 @@ public class Empresa extends Application {
     }
 
     private Map<String, Producto> productos;
-    private Map<Integer, Cliente> clientes;
+    private static HashMap<String, Cliente> clientes;
     private List<Venta> ventas;
     private Set<String> carritoCompras;
     private LinkedList<Venta> historicoVentas;
@@ -35,6 +33,10 @@ public class Empresa extends Application {
         this.carritoCompras = new HashSet<>();
         this.historicoVentas = new LinkedList<>();
         this.inventarioBajo = new TreeSet<>(Comparator.comparingInt(Producto::getCantidadInventario));
+    }
+
+    public static HashMap<String, Cliente> obtenerClientes() {
+        return clientes;
     }
 
     public static void main(String[] args) {
