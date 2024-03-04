@@ -1,6 +1,8 @@
 package com.example.laboratorio.viewcontroller;
 
 import com.example.laboratorio.Cliente;
+import com.example.laboratorio.Empresa;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+
+import java.util.HashMap;
 
 public class ClienteViewController {
 
@@ -95,6 +99,41 @@ public class ClienteViewController {
 
 
 
+    }
+
+    @FXML
+    void initialize() {
+        tienda = new Tienda();
+        clienteControllerService = new ClienteController();
+        initView();
+
+    }
+
+    private void initView() {
+        initDataBinding();
+        obtenerCliente();
+        listaClientes.clear();
+        tableClientes.setItems(listaClientes);
+        listenerSelection();
+    }
+    private void initDataBinding() {
+        colNumeroIdentificacion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().numeroIdentificacion()));
+        colNombres.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
+        colApellidos.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().apellido()));
+        colDireccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().direccion()));
+    }
+
+    private void listenerSelection() {
+        tableClientes.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            clienteDtoSeleccionado = newSelection;
+            mostrarInformacionCliente(clienteDtoSeleccionado);
+        });
+    }
+
+    private void obtenerCliente() {
+        HashMap<String, Cliente> clientes = Empresa.obtenerClientes();
+        listaClientes.clear();
+        listaClientes.addAll(clientes.values());
     }
 
 }

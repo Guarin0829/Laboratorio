@@ -12,6 +12,10 @@ import static javafx.application.Application.launch;
 
 public class Empresa extends Application {
 
+    public static HashMap<String, Cliente> obtenerClientes() {
+        return null;
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Empresa.class.getResource("InicioView.fxml"));
