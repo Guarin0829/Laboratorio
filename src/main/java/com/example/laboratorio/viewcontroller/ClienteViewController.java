@@ -7,12 +7,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.HashMap;
+import java.util.function.Predicate;
 
 public class ClienteViewController {
 
@@ -57,6 +55,21 @@ public class ClienteViewController {
     @FXML
     void actualizarAnunciante(ActionEvent event) {
 
+        String numeroIdentificacion = clienteSeleccionado.getNumeroIdentificacion();
+        Cliente cliente = construirCliente();
+
+        if (datosValidos(cliente)) {
+            boolean clienteActualizado = Empresa.obtenerClientes (numeroIdentificacion, cliente);
+            if (clienteActualizado) {
+                listaClientes.remove(clienteSeleccionado);
+                listaClientes.add(cliente);
+                tableAnunciantes.refresh();
+                Limpiar();
+            } else {
+                mostrarMensaje ("Notificación cliente", "Cliente no actualizado", "El Cliente no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+            }
+        }
+
     }
 
     @FXML
@@ -74,11 +87,6 @@ public class ClienteViewController {
     }
 
     @FXML
-    void busquedaAnunciante(ActionEvent event) {
-
-    }
-
-    @FXML
     void eliminarAnunciante(ActionEvent event) {
 
         int selectedRow = tableAnunciantes.getSelectionModel().getSelectedIndex();
@@ -92,6 +100,7 @@ public class ClienteViewController {
     @FXML
     void limpiarBusqueda(ActionEvent event) {
 
+        Limpiar();
     }
 
     public void Limpiar(){
@@ -146,6 +155,39 @@ public class ClienteViewController {
             txfDireccionCliente.setText(clienteSeleccionado.getDireccion());
 
         }
+    }
+
+    private Cliente construirCliente() {
+        String nombre = txfNombreCliente.getText();
+        String numeroIdentificacion = txfNumeroIdentificacionCliente.getText();
+        String direccion = txfDireccionCliente.getText();
+        return new Cliente(nombre, numeroIdentificacion, direccion);
+    }
+
+    private boolean datosValidos(Cliente cliente) {
+        String mensaje = "";
+
+        if(cliente.getNombre() == null || cliente.getNombre().equals(""))
+            mensaje += "El nombre del cliente es invalido \n" ;
+        if(cliente.getNumeroIdentificacion() == null || cliente.getNumeroIdentificacion().equals(""))
+            mensaje += "El número de identificación del cliente es invalido \n" ;
+        if(cliente.getDireccion() == null || cliente.getDireccion().equals(""))
+            mensaje += "La dirección del cliente es invalida \n" ;
+
+        if(mensaje.equals("")){
+            return true;
+        }else{
+            System.out.print("El cliente no fue actualizado");
+            return false;
+        }
+    }
+
+    private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
+        Alert aler = new Alert(alertType);
+        aler.setTitle(titulo);
+        aler.setHeaderText(header);
+        aler.setContentText(contenido);
+        aler.showAndWait();
     }
 
 }

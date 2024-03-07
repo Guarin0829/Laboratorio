@@ -16,34 +16,37 @@ public class VentaViewController {
     private Button btnAgregarVenta;
 
     @FXML
-    private Button btnBuscarVenta;
-
-    @FXML
     private Button btnEliminarVentra;
 
     @FXML
     private Button btnLimpiarCamposVenta;
 
     @FXML
-    private TableColumn<?, ?> colDireccionCliente;
+    private TableColumn<?, ?> colCantidad;
 
     @FXML
-    private TableColumn<?, ?> colNombreCliente;
+    private TableColumn<?, ?> colDescripcion;
 
     @FXML
-    private TableView<?> tableAnunciantes;
+    private TableColumn<?, ?> colSubtotal;
 
     @FXML
-    private TextField txfNombreCliente;
+    private TableColumn<?, ?> colTotal;
 
     @FXML
-    private TextField txfNombreCliente1;
+    private TableView<?> tableVentas;
 
     @FXML
-    private TextField txfNombreCliente2;
+    private TextField txfCantidad;
 
     @FXML
-    private TextField txfNumeroIdentificacionCliente1;
+    private TextField txfCodigo;
+
+    @FXML
+    private TextField txfCodigoVenta;
+
+    @FXML
+    private TextField txfNumeroIdentificacionCliente;
 
     @FXML
     void actualizarAnunciante(ActionEvent event) {
@@ -52,11 +55,6 @@ public class VentaViewController {
 
     @FXML
     void agregarAnunciante(ActionEvent event) {
-
-    }
-
-    @FXML
-    void busquedaAnunciante(ActionEvent event) {
 
     }
 
@@ -71,4 +69,5 @@ public class VentaViewController {
     }
 
 }
+
 

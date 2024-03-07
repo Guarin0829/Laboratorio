@@ -1,18 +1,20 @@
 package com.example.laboratorio;
 
+import java.util.function.Predicate;
+
 public class Cliente {
 
-    String numeroIdentificacion;
     String nombre;
+    String numeroIdentificacion;
     String direccion;
 
     public Cliente() {
 
     }
 
-    public Cliente(String numeroIdentificacion, String nombre, String direccion) {
-        this.numeroIdentificacion = numeroIdentificacion;
+    public Cliente(String nombre, String numeroIdentificacion, String direccion) {
         this.nombre = nombre;
+        this.numeroIdentificacion = numeroIdentificacion;
         this.direccion = direccion;
     }
 
@@ -39,4 +41,5 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
 }
