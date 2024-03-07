@@ -34,7 +34,7 @@
                         <Font size="13.0" />
                     </font>
                 </Label>
-                <TextField fx:id="txfNombreCliente" prefHeight="46.0" prefWidth="150.0" promptText="Ingrese el nombre " GridPane.columnIndex="2" />
+                <TextField fx:id="txfCodigoVenta" prefHeight="46.0" prefWidth="150.0" promptText="Ingrese el nombre " GridPane.columnIndex="2" />
                 <Label text="Fecha:" GridPane.rowIndex="2">
                     <font>
                         <Font size="13.0" />
@@ -43,21 +43,19 @@
             <DatePicker prefHeight="25.0" prefWidth="205.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             </children>
         </GridPane>
-        <TableView fx:id="tableAnunciantes" layoutX="7.0" layoutY="373.0" prefHeight="232.0" prefWidth="437.0">
+        <TableView fx:id="tableVentas" layoutX="7.0" layoutY="373.0" prefHeight="232.0" prefWidth="437.0">
             <columns>
-                <TableColumn fx:id="colNombreCliente" prefWidth="107.0" text="Descripción" />
-                <TableColumn fx:id="colDireccionCliente" prefWidth="69.0" text="Cantidad" />
-            <TableColumn prefWidth="137.0" text="Total" />
-            <TableColumn prefWidth="123.0" text="Subtotal" />
+                <TableColumn fx:id="colDescripcion" prefWidth="107.0" text="Descripción" />
+                <TableColumn fx:id="colCantidad" prefWidth="69.0" text="Cantidad" />
+            <TableColumn fx:id="colTotal" prefWidth="137.0" text="Total" />
+            <TableColumn fx:id="colSubtotal" prefWidth="123.0" text="Subtotal" />
             </columns>
         </TableView>
-        <GridPane layoutX="12.0" layoutY="327.0">
+        <GridPane layoutX="51.0" layoutY="327.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="70.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
@@ -69,9 +67,8 @@
             <children>
                 <Button fx:id="btnAgregarVenta" mnemonicParsing="false" onAction="#agregarAnunciante" prefHeight="31.0" prefWidth="100.0" styleClass="primary" text="Agregar" />
                 <Button fx:id="btnActualizarVenta" mnemonicParsing="false" onAction="#actualizarAnunciante" prefHeight="38.0" prefWidth="100.0" styleClass="primary" text="Actualizar" GridPane.columnIndex="2" />
-                <Button fx:id="btnBuscarVenta" mnemonicParsing="false" onAction="#busquedaAnunciante" prefHeight="52.0" prefWidth="100.0" styleClass="primary" text="Buscar" GridPane.columnIndex="4" />
-                <Button fx:id="btnLimpiarCamposVenta" mnemonicParsing="false" onAction="#limpiarBusqueda" prefHeight="32.0" prefWidth="145.0" styleClass="primary" text="Limpiar Campos" GridPane.columnIndex="8" />
-                <Button fx:id="btnEliminarVentra" mnemonicParsing="false" onAction="#eliminarAnunciante" prefHeight="52.0" prefWidth="100.0" styleClass="primary" text="Eliminar" GridPane.columnIndex="6" />
+                <Button fx:id="btnLimpiarCamposVenta" mnemonicParsing="false" onAction="#limpiarBusqueda" prefHeight="32.0" prefWidth="145.0" styleClass="primary" text="Limpiar Campos" GridPane.columnIndex="6" />
+                <Button fx:id="btnEliminarVentra" mnemonicParsing="false" onAction="#eliminarAnunciante" prefHeight="52.0" prefWidth="100.0" styleClass="primary" text="Eliminar" GridPane.columnIndex="4" />
             </children>
         </GridPane>
       <Label layoutX="10.0" layoutY="6.0" text="Información Venta" />
@@ -92,7 +89,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="txfNombreCliente1" prefHeight="46.0" prefWidth="150.0" promptText="Ingrese el numero de identificacion" GridPane.columnIndex="2">
+            <TextField fx:id="txfNumeroIdentificacionCliente" prefHeight="46.0" prefWidth="150.0" promptText="Ingrese el numero de identificacion" GridPane.columnIndex="2">
                <font>
                   <Font size="11.0" />
                </font>
@@ -118,13 +115,13 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="txfNombreCliente2" prefHeight="46.0" prefWidth="150.0" promptText="Ingrese el codigo" GridPane.columnIndex="2" />
+            <TextField fx:id="txfCodigo" prefHeight="46.0" prefWidth="150.0" promptText="Ingrese el codigo" GridPane.columnIndex="2" />
             <Label text="Cantidad:" GridPane.rowIndex="2">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="txfNumeroIdentificacionCliente1" promptText="Ingrese la cantidad" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="txfCantidad" promptText="Ingrese la cantidad" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
       </GridPane>
     </children>

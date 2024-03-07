@@ -10,6 +10,10 @@ import java.util.*;
 
 public class Empresa extends Application {
 
+    public static boolean obtenerClientes(String numeroIdentificacion, Cliente cliente) {
+        return true;
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Empresa.class.getResource("InicioView.fxml"));
